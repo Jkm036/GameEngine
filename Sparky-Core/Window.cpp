@@ -28,7 +28,7 @@ namespace Sparky {
 		}
 
 		void Window::tick() {
-			//takes events off of queue and processes them with related clalbacks
+			//takes events off of queue and processes them with related callbacks
 			glfwPollEvents();
 			//swaps back buffers to display
 			glfwSwapBuffers(m_window);
