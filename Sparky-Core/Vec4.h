@@ -6,7 +6,8 @@ namespace Sparky{
 		struct Vec4 {
 			float w,x,y,z;
 
-			Vec4();
+			//Vec4();
+			Vec4() = default;
 			Vec4(const float& w,const float& x, const float& y, const float& z);
 
 			Vec4& add(const Vec4& other);

@@ -46,7 +46,7 @@ namespace Sparky {
 			}
 			//Makes context for window
 			glfwMakeContextCurrent(m_window);
-			//My Guess: Maps the glfw created window pointer to a pointer to our window object
+			//My Guess: Stores User defined window Object in association with Actual Window
 			glfwSetWindowUserPointer(m_window, this);
 			//Upon resize, calls window_resize
 			glfwSetWindowSizeCallback(m_window, window_resize);
@@ -91,6 +91,7 @@ namespace Sparky {
 		int Window::getHeight() const {
 			return m_height;
 		}
+		// friends
 		void window_resize(GLFWwindow* window, int width, int height) {
 			glViewport(0, 0, width, height);
 		}
