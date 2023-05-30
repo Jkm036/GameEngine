@@ -14,7 +14,7 @@ This is a game engine I am making completely in C++. I plan to explore computer 
   
 </div>
 
-#Basic Rendering capabilities using graphics card APIs & OpenGL
+# Basic Rendering capabilities using graphics card APIs & OpenGL
 <div align="center" >
 <img src="https://user-images.githubusercontent.com/93635097/242000402-9910d0c8-f42a-4a7a-bfeb-12cddd2ec10a.png" height="150px" />
 </div>
