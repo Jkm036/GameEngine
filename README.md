@@ -7,8 +7,7 @@ This is a game engine I am making completely in C++. I plan to explore computer 
 <div align="center">
   
   <a href="">![license](https://img.shields.io/github/license/Jkm036/GameEngine)</a>
-  <a href="">![commit](https://img.shields.io/github/last-commit/Jkm036/GameEngine)</a>
-   <a href="">![weekly commits](https://img.shields.io/github/commit-activity/w/Jkm036/GameEngine)</a>
+  <a href="">![weekly commits](https://img.shields.io/github/commit-activity/w/Jkm036/GameEngine)</a>
   <a href="">![issues](https://img.shields.io/github/issues/Jkm036/GameEngine)</a>
   <a href="">![stars](https://img.shields.io/github/stars/Jkm036/GameEngine?style=social)</a>
   
