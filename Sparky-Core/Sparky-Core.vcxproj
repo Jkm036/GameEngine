@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\graphics\buffer\IndexBuffer.cpp" />
+    <ClCompile Include="source\graphics\buffer\VertexArray.cpp" />
     <ClCompile Include="source\graphics\buffer\VertexBuffer.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\math\Matrix4.cpp" />
@@ -38,6 +39,7 @@
     <ClInclude Include="header files\Vec2.h" />
     <ClInclude Include="header files\Vec3.h" />
     <ClInclude Include="header files\Vec4.h" />
+    <ClInclude Include="header files\VertexArray.h" />
     <ClInclude Include="header files\Window.h" />
     <ClInclude Include="header files\VertexBuffer.h" />
   </ItemGroup>

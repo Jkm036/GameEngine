@@ -20,7 +20,31 @@ namespace Sparky{
 			return shader;
 
 		}
-
+		GLint Shader::getUniformLocation(const GLchar* name) {
+			return glGetUniformLocation(m_ShaderID, name);
+		}
+		void Shader::setUniform1f(const GLchar* name, float val) {
+			glUniform1f(getUniformLocation(name), val);
+		}
+		void Shader::setUniform1i(const GLchar* name, int val) {
+			glUniform1i(getUniformLocation(name), val);
+		}
+		void Shader::setUniform2f(const GLchar* name, const Maths::Vec2& vector) {
+			glUniform2f(getUniformLocation(name), vector.x, vector.y);
+		}
+		void Shader::setUniform3f(const GLchar* name, const Maths::Vec3& vector) {
+			glUniform3f(getUniformLocation(name), vector.x,vector.y,vector.z);
+		}
+		void Shader::setUniform4f(const GLchar* name, const Maths::Vec4& vector) {
+			glUniform4f(getUniformLocation(name), vector.w, vector.x, vector.y, vector.z);
+		}
+		
+		void Shader::setUniformMat4(const GLchar* name, const Maths::Matrix4& matrix) {
+			glUniformMatrix4fv(glGetUniformLocation(m_ShaderID, name), 1, GL_FALSE, matrix.elements);
+		}
+		
+		
+		
 		bool Shader::compiled(unsigned int& shader){
 			 int result;
 			 int infoLogLength;

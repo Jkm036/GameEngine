@@ -1,7 +1,7 @@
 #pragma once
 #include<iostream>
-namespace Sparky{
-	namespace Maths{
+namespace Sparky {
+	namespace Maths {
 	
 		struct Vec2 {
 			float x, y;

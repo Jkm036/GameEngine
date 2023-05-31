@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include "Vec2.h"
 #include "Vec3.h"
 #include "Vec4.h"
 namespace Sparky {
@@ -16,7 +17,7 @@ namespace Sparky {
 			static Matrix4 identity();
 			static Matrix4 orthographic(float left, float right,float bottom, float top, float near, float far);
 			static Matrix4 perspective(float fov, float aspect_ration, float near, float far);
-			static Matrix4 transaltion(const Vec3& translation);
+			static Matrix4 translation(const Vec3& translation);
 			static Matrix4 rotation(float angle, const Vec3& axis);
 			static Matrix4 scale(const Vec3& scale);
 

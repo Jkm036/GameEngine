@@ -65,7 +65,7 @@ namespace Sparky {
 			return result;
 		}
 
-		Matrix4 Matrix4::transaltion(const Vec3& translation) {
+		Matrix4 Matrix4::translation(const Vec3& translation) {
 			Matrix4 result(1);
 
 			result.elements[(3 * 4) + 0] = translation.x;

@@ -60,6 +60,9 @@
     <ClCompile Include="source\graphics\buffer\IndexBuffer.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="source\graphics\buffer\VertexArray.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header files\Vec3.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header files\IndexBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\VertexArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
