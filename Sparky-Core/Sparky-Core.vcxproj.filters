@@ -25,54 +25,80 @@
     <Filter Include="src\utils">
       <UniqueIdentifier>{c92f3912-f86c-4579-adae-5fb2e90bebac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\shaders">
+      <UniqueIdentifier>{336a5f5b-af49-477b-957f-d64612a322f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\graphics\Buffers">
+      <UniqueIdentifier>{32345268-518a-44b2-8dc6-a5271f02b12a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="source\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
+    <ClCompile Include="source\graphics\Window.cpp">
       <Filter>src\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Vec2.cpp">
+    <ClCompile Include="source\math\Vec2.cpp">
       <Filter>src\maths</Filter>
     </ClCompile>
-    <ClCompile Include="Vec3.cpp">
+    <ClCompile Include="source\math\Vec3.cpp">
       <Filter>src\maths</Filter>
     </ClCompile>
-    <ClCompile Include="Vec4.cpp">
+    <ClCompile Include="source\math\Vec4.cpp">
       <Filter>src\maths</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix4.cpp">
+    <ClCompile Include="source\math\Matrix4.cpp">
       <Filter>src\maths</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
+    <ClCompile Include="source\graphics\Shader.cpp">
       <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\graphics\buffer\VertexBuffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="source\graphics\buffer\IndexBuffer.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vec3.h">
+    <ClInclude Include="header files\Vec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vec4.h">
+    <ClInclude Include="header files\Vec4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vec2.h">
+    <ClInclude Include="header files\Vec2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Matrix4.h">
+    <ClInclude Include="header files\Matrix4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyMath.h">
+    <ClInclude Include="header files\MyMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FileUtils.h">
+    <ClInclude Include="header files\FileUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
+    <ClInclude Include="header files\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
+    <ClInclude Include="header files\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="header files\VertexBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\IndexBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\shaders\basic.vert">
+      <Filter>src\shaders</Filter>
+    </None>
+    <None Include="source\shaders\basic.frag">
+      <Filter>src\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

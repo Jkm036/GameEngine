@@ -19,23 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Matrix4.cpp" />
-    <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="Vec2.cpp" />
-    <ClCompile Include="Vec3.cpp" />
-    <ClCompile Include="Vec4.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="source\graphics\buffer\IndexBuffer.cpp" />
+    <ClCompile Include="source\graphics\buffer\VertexBuffer.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\math\Matrix4.cpp" />
+    <ClCompile Include="source\graphics\Shader.cpp" />
+    <ClCompile Include="source\math\Vec2.cpp" />
+    <ClCompile Include="source\math\Vec3.cpp" />
+    <ClCompile Include="source\math\Vec4.cpp" />
+    <ClCompile Include="source\graphics\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FileUtils.h" />
-    <ClInclude Include="Matrix4.h" />
-    <ClInclude Include="MyMath.h" />
-    <ClInclude Include="Shader.h" />
-    <ClInclude Include="Vec2.h" />
-    <ClInclude Include="Vec3.h" />
-    <ClInclude Include="Vec4.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="header files\FileUtils.h" />
+    <ClInclude Include="header files\IndexBuffer.h" />
+    <ClInclude Include="header files\Matrix4.h" />
+    <ClInclude Include="header files\MyMath.h" />
+    <ClInclude Include="header files\Shader.h" />
+    <ClInclude Include="header files\Vec2.h" />
+    <ClInclude Include="header files\Vec3.h" />
+    <ClInclude Include="header files\Vec4.h" />
+    <ClInclude Include="header files\Window.h" />
+    <ClInclude Include="header files\VertexBuffer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\shaders\basic.frag" />
+    <None Include="source\shaders\basic.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -99,6 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\GLFW\include;$(ProjectDir)header files</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -113,6 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\GLFW\include;$(ProjectDir)header files</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,6 +137,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\GLFW\include;$(ProjectDir)header files</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +153,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\GLFW\include;$(ProjectDir)header files</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
