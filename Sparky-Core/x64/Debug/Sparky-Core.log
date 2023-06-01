@@ -1,3 +1,2 @@
 ﻿  main.cpp
-C:\Users\joshk\programming\Sparky\GameEngine\Sparky-Core\source\main.cpp(51,15): warning C4101: 'indexBuffer': unreferenced local variable
   Sparky-Core.vcxproj -> C:\Users\joshk\programming\Sparky\GameEngine\x64\Debug\Sparky-Core.exe

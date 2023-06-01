@@ -51,7 +51,7 @@ namespace Sparky {
 		Matrix4 Matrix4::perspective(float fov, float aspect_ration, float near, float far) {
 			Matrix4 result(1.0f);
 			
-			float q = 1.0f / (float)tan(toRadians(0.5 * fov));
+			float q = 1.0f / (float)tan(myToRadians(0.5 * fov));
 			float a = q / aspect_ration;
 			float b = (near + far) / (near - far);
 			float c = (2.0f * near * far) / (near - far);
@@ -84,7 +84,7 @@ namespace Sparky {
 		 Matrix4 Matrix4::rotation(float angle, const Vec3& axis){
 			 Matrix4 result(1);
 
-			 float r = toRadians(angle);
+			 float r = myToRadians(angle);
 			 float c = cos(r);
 			 float s = sin(r);
 			 float omc = 1.0f - c;

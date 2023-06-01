@@ -63,6 +63,12 @@
     <ClCompile Include="source\graphics\buffer\VertexArray.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="source\graphics\Renderable.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="source\graphics\Simple2DRenderer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header files\Vec3.h">
@@ -96,6 +102,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header files\VertexArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\Renderable2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\Renderer2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\Simple2DRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

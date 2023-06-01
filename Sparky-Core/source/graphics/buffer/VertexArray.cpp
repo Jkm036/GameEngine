@@ -6,6 +6,7 @@ namespace Sparky {
 		VertexArray::VertexArray() {
 			glGenVertexArrays(1, &m_ArrayID);
 		}
+
 		VertexArray::~VertexArray() {
 			for (int i = 0; i < m_buffers.size(); ++i) {
 				delete m_buffers[i];
@@ -15,7 +16,7 @@ namespace Sparky {
 			bind();
 			buffer->bind();
 			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index, buffer->getcomponentCount(),GL_FLOAT,GL_FALSE,0,0);
+			glVertexAttribPointer(index, buffer->getcomponentCount(),GL_FLOAT,GL_FALSE,0, 0);
 			buffer->unbind();
 			unbind();
 		}
