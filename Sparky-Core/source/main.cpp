@@ -13,6 +13,10 @@
 #include "Renderer2D.h"
 #include "Renderable2D.h"
 #include "Simple2DRenderer.h"
+#include "Sprite.h"
+#include "StaticSprite.h"
+#include "BatchRenderer2D.h"
+
 
 #include<GL/glew.h>
 int main() {
@@ -72,17 +76,22 @@ int main() {
 	shader.setUniform4f("u_Color", { 1.0f,0.0f,1.0f,1.0f });
 	shader.setUniform2f("light_pos", Sparky::Maths::Vec2(4.0f, 1.5f));
 	//
-	Sparky::Graphics::Renderable2D sprite(Sparky::Maths::Vec3(5,5,0),Sparky::Maths::Vec2(4,4), Sparky::Maths::Vec4(1,0,1,1),shader);
-	Sparky::Graphics::Renderable2D sprite2(Sparky::Maths::Vec3(7, 1, 0), Sparky::Maths::Vec2(2, 3), Sparky::Maths::Vec4(0.2f, 0, 1, 1), shader);
-	Sparky::Graphics::Simple2DRenderer renderer;
+	//Sparky::Graphics::BatchRenderer2D batch;
+
+
+	Sparky::Graphics::Sprite sprite( (5),(5 ),4,4,  Sparky::Maths::Vec4(1,0,1,1));
+	Sparky::Graphics::Sprite sprite2((7 ),(1), 2,3, Sparky::Maths::Vec4(0.2f, 0, 1, 1));
+	Sparky::Graphics::BatchRenderer2D renderer;
 	double x, y;
 	while (!window.closed()) {
 		window.clear();
 		window.getMousePosition(x, y);
 
 		shader.setUniform2f("light_pos", Sparky::Maths::Vec2(   ((float) x * 16.0f/960.0f)+1.0f ,9.0f -(float)y*9.0f/ 540.0f ));
+		renderer.Begin();
 		renderer.submit(&sprite);
 		renderer.submit(&sprite2);
+		renderer.End();
 		renderer.flush();
 
 		window.tick();

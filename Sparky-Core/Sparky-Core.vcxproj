@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\graphics\BatchRenderer2D.cpp" />
     <ClCompile Include="source\graphics\buffer\IndexBuffer.cpp" />
     <ClCompile Include="source\graphics\buffer\VertexArray.cpp" />
     <ClCompile Include="source\graphics\buffer\VertexBuffer.cpp" />
-    <ClCompile Include="source\graphics\Renderable.cpp" />
     <ClCompile Include="source\graphics\Simple2DRenderer.cpp" />
+    <ClCompile Include="source\graphics\Sprite.cpp" />
+    <ClCompile Include="source\graphics\StaticSprite.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\math\Matrix4.cpp" />
     <ClCompile Include="source\graphics\Shader.cpp" />
@@ -31,8 +33,10 @@
     <ClCompile Include="source\math\Vec3.cpp" />
     <ClCompile Include="source\math\Vec4.cpp" />
     <ClCompile Include="source\graphics\Window.cpp" />
+    <ClCompile Include="source\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header files\BatchRenderer2D.h" />
     <ClInclude Include="header files\FileUtils.h" />
     <ClInclude Include="header files\IndexBuffer.h" />
     <ClInclude Include="header files\Matrix4.h" />
@@ -41,6 +45,8 @@
     <ClInclude Include="header files\Renderer2D.h" />
     <ClInclude Include="header files\Shader.h" />
     <ClInclude Include="header files\Simple2DRenderer.h" />
+    <ClInclude Include="header files\Sprite.h" />
+    <ClInclude Include="header files\StaticSprite.h" />
     <ClInclude Include="header files\Vec2.h" />
     <ClInclude Include="header files\Vec3.h" />
     <ClInclude Include="header files\Vec4.h" />

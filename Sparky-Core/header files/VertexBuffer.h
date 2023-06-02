@@ -11,6 +11,7 @@ namespace Sparky {
 		public:
 
 			VertexBuffer(GLfloat* data, GLsizei count, GLuint componentCount);
+			~VertexBuffer();
 			void bind() const;
 			void unbind();
 

@@ -63,10 +63,19 @@
     <ClCompile Include="source\graphics\buffer\VertexArray.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="source\graphics\Renderable.cpp">
+    <ClCompile Include="source\graphics\Simple2DRenderer.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="source\graphics\Simple2DRenderer.cpp">
+    <ClCompile Include="source\graphics\BatchRenderer2D.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Source.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="source\graphics\StaticSprite.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="source\graphics\Sprite.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -111,6 +120,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header files\Simple2DRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\BatchRenderer2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\Sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\StaticSprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,6 +13,11 @@ namespace Sparky {namespace Graphics {
 			glBufferData(GL_ARRAY_BUFFER, count * sizeof(float), data, GL_STATIC_DRAW);
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 		}
+		VertexBuffer::~VertexBuffer() 
+		{
+			glDeleteBuffers(1, &m_BufferID);
+
+		}
 		void VertexBuffer::bind() const {
 			glBindBuffer(GL_ARRAY_BUFFER, m_BufferID);
 		}
