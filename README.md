@@ -15,8 +15,10 @@ This is a game engine I am making completely in C++. I plan to explore computer 
 
 # Basic Rendering capabilities using graphics card APIs & OpenGL
 <div align="center" >
-<img src = "https://github.com/Jkm036/Jkm036/assets/93635097/c41949ab-dd9e-4078-8df3-7628c92390b0" height="150px"/>
-<img src="https://user-images.githubusercontent.com/93635097/242000402-9910d0c8-f42a-4a7a-bfeb-12cddd2ec10a.png" height="150px" />
+ <img src="https://github.com/Jkm036/Jkm036/assets/93635097/6b879767-7b9f-46f0-9f10-2a402b8bdccc" height="150px">
+ <img src="https://github.com/Jkm036/Jkm036/assets/93635097/60cc1818-c95b-4167-989c-6ea8aeff6ecb" height = "150px"/>
+ <img height="150px"  src="https://github.com/Jkm036/Jkm036/assets/93635097/c41949ab-dd9e-4078-8df3-7628c92390b0"/>
+ 
 </div>
 
 
