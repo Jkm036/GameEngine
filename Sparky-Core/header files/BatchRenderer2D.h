@@ -7,7 +7,7 @@
 
 #define SHADER_VERTEX_INDEX 0
 #define SHADER_COLOR_INDEX  1
-
+#include <cstddef>
 #include "Renderer2D.h"
 #include "Renderable2D.h"
 #include "IndexBuffer.h"
@@ -26,9 +26,9 @@ namespace Sparky {
 		public:
 			BatchRenderer2D();
 			~BatchRenderer2D();
-			void Begin();
+			void Begin() override ;
 			void submit(const Renderable2D* renderable) override;
-			void End();
+			void End()   override ;
 			void flush() override;
 		private:
 			void init();

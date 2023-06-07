@@ -9,7 +9,7 @@ namespace Sparky {
 		struct Matrix4 {
 			union {
 				float elements[16];
-				Vec4 colums[4];
+				Vec4 columns[4];
 			};
 			
 			Matrix4();
@@ -23,9 +23,17 @@ namespace Sparky {
 
 			friend std::ostream& operator<<(std::ostream&, const Matrix4&);
 			friend Matrix4 operator*(Matrix4 left, const Matrix4& right);
+			
+			
 			Matrix4& operator*=(const Matrix4& other);
 
-			Matrix4& mupltiply(const Matrix4& other);		
+			Matrix4& multiply(const Matrix4& other);
+			
+			Vec3 multiply(const Vec3& other) const;
+			friend Vec3 operator*(const Matrix4& left, const Vec3& right);
+
+			Vec4 multiply(const Vec4& other) const;
+			friend Vec4 operator*(const Matrix4& left, const Vec4& right);
 		};
 	
 	}

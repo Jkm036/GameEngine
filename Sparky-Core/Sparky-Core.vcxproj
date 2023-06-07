@@ -23,6 +23,9 @@
     <ClCompile Include="source\graphics\buffer\IndexBuffer.cpp" />
     <ClCompile Include="source\graphics\buffer\VertexArray.cpp" />
     <ClCompile Include="source\graphics\buffer\VertexBuffer.cpp" />
+    <ClCompile Include="source\graphics\Group.cpp" />
+    <ClCompile Include="source\graphics\layers\Layer.cpp" />
+    <ClCompile Include="source\graphics\layers\TileLayer.cpp" />
     <ClCompile Include="source\graphics\Simple2DRenderer.cpp" />
     <ClCompile Include="source\graphics\Sprite.cpp" />
     <ClCompile Include="source\graphics\StaticSprite.cpp" />
@@ -33,12 +36,13 @@
     <ClCompile Include="source\math\Vec3.cpp" />
     <ClCompile Include="source\math\Vec4.cpp" />
     <ClCompile Include="source\graphics\Window.cpp" />
-    <ClCompile Include="source\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header files\BatchRenderer2D.h" />
     <ClInclude Include="header files\FileUtils.h" />
+    <ClInclude Include="header files\Group.h" />
     <ClInclude Include="header files\IndexBuffer.h" />
+    <ClInclude Include="header files\Layer.h" />
     <ClInclude Include="header files\Matrix4.h" />
     <ClInclude Include="header files\MyMath.h" />
     <ClInclude Include="header files\Renderable2D.h" />
@@ -47,12 +51,15 @@
     <ClInclude Include="header files\Simple2DRenderer.h" />
     <ClInclude Include="header files\Sprite.h" />
     <ClInclude Include="header files\StaticSprite.h" />
+    <ClInclude Include="header files\TileLayer.h" />
+    <ClInclude Include="header files\Timer.h" />
     <ClInclude Include="header files\Vec2.h" />
     <ClInclude Include="header files\Vec3.h" />
     <ClInclude Include="header files\Vec4.h" />
     <ClInclude Include="header files\VertexArray.h" />
     <ClInclude Include="header files\Window.h" />
     <ClInclude Include="header files\VertexBuffer.h" />
+    <ClInclude Include="source\Utils\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source\shaders\basic.frag" />
@@ -114,6 +121,10 @@
     <IncludePath>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glew-2.2.0\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\GLFW\lib-vc2022;$(SolutionDir)Dependencies\glew-2.2.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glew-2.2.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\GLFW\lib-vc2022;$(SolutionDir)Dependencies\glew-2.2.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -151,6 +162,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\GLFW\include;$(ProjectDir)header files</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>UninitializedLocalUsageCheck</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -164,15 +176,20 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_RELEASE;_CONSOLE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\GLFW\include;$(ProjectDir)header files</AdditionalIncludeDirectories>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

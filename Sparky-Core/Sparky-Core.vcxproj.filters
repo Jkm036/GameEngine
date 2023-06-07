@@ -69,13 +69,19 @@
     <ClCompile Include="source\graphics\BatchRenderer2D.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="source\Source.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="source\graphics\StaticSprite.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="source\graphics\Sprite.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="source\graphics\layers\Layer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="source\graphics\layers\TileLayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="source\graphics\Group.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -129,6 +135,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header files\StaticSprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\Layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\TileLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header files\Group.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,4 @@
 #include "BatchRenderer2D.h"
-#include "VertexArray.h"
 namespace Sparky {
 	namespace Graphics {
 
@@ -20,12 +19,14 @@ namespace Sparky {
 			glBufferData(GL_ARRAY_BUFFER, RENDERER_BUFFER_SIZE, nullptr, GL_DYNAMIC_DRAW);
 			glEnableVertexAttribArray(SHADER_VERTEX_INDEX);
 			glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT,GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)0);
+
 			glEnableVertexAttribArray(SHADER_COLOR_INDEX);																		
-			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(3* sizeof(GLfloat)));
+			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(vertexData, vertexData::color)));
+			
 			glBindBuffer(GL_ARRAY_BUFFER,0);
 			
 
-			GLushort indices[RENDERER_INDICES_SIZE];
+			GLushort * indices= new GLushort[RENDERER_INDICES_SIZE];
 			int originVertex = 0;
 
 			for (int i = 0; i < RENDERER_INDICES_SIZE ; i+=6) {
@@ -50,20 +51,27 @@ namespace Sparky {
 			Maths::Vec2 size     = renderable->getSize();
 			Maths::Vec4 color    = renderable->getColor();
 
-			m_VertexBuffer->vertex = position;
-			m_VertexBuffer->color = color;
+			unsigned int r = color.w * 255.0f;
+			unsigned int g = color.x * 255.0f;
+			unsigned int b=  color.y * 255.0f;
+			unsigned int a = color.z * 255.0f;
+
+			unsigned int c = a << 24 | b << 16 | g << 8 | r;
+
+			m_VertexBuffer->vertex = *m_TransformationBack * position;
+			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 
-			m_VertexBuffer->vertex = Maths::Vec3(position.x, (position.y + size.y), position.z);
-			m_VertexBuffer->color = color;
+			m_VertexBuffer->vertex = *m_TransformationBack * Maths::Vec3(position.x, (position.y + size.y), position.z);
+			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 
-			m_VertexBuffer->vertex = Maths::Vec3((position.x+ size.x), (position.y + size.y), position.z);
-			m_VertexBuffer->color = color;
+			m_VertexBuffer->vertex = *m_TransformationBack * Maths::Vec3((position.x+ size.x), (position.y + size.y), position.z);
+			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 
-			m_VertexBuffer->vertex = Maths::Vec3((position.x + size.x), position.y , position.z);
-			m_VertexBuffer->color = color;
+			m_VertexBuffer->vertex = *m_TransformationBack * Maths::Vec3((position.x + size.x), position.y , position.z);
+			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 
 			m_IndexCount+=6;

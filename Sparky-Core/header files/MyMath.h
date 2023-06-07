@@ -4,7 +4,7 @@
 
 namespace Sparky {
 	namespace Maths {
-		float myToRadians(float degrees) {
+		inline float myToRadians(float degrees) {
 			return degrees * ((float)M_PI / 180.0f);
 		}
 	}

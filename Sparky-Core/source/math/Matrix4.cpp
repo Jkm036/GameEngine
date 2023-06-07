@@ -23,17 +23,36 @@ namespace Sparky {
 			return Matrix4::Matrix4(1);
 		}
 
-		Matrix4& Matrix4::mupltiply(const Matrix4& other) {
+		Matrix4& Matrix4::multiply(const Matrix4& other) {
+			float data[16];
+
 			for (int r = 0; r < 4;  r++) {
 				for (int c = 0; c < 4; c++) {
 					float sum = 0.0f;
 					for( int element = 0; element < 4; element++){
 						sum += this->elements[(element * 4) + r] * other.elements[(c * 4) + element];
 					}
-					elements[r + (c * 4)]=sum;
+					data[r + (c * 4)]=sum;
 				}
 			}
+			memcpy(elements, data, 16 * sizeof(float));
 			return *this;
+		}
+		Vec4 Matrix4::multiply(const Vec4& other) const {
+			return Vec4(
+				((columns[0].w * other.w) + (columns[1].w * other.x) + (columns[2].w * other.y) + (columns[3].w * other.z)),
+				((columns[0].x * other.w) + (columns[1].x * other.x)+ (columns[2].x * other.y) + (columns[3].x * other.z)),
+				((columns[0].y * other.w) + (columns[1].y * other.x) + (columns[2].y * other.y) + (columns[3].y * other.z)),	
+				((columns[0].z * other.w) + (columns[1].z * other.x) + (columns[2].z * other.y) + (columns[3].z * other.z))
+
+			);
+		}
+		Vec3 Matrix4::multiply(const Vec3& other) const {
+			return Vec3(
+				((columns[0].w * other.x) + (columns[1].w * other.y) + (columns[2].w * other.z) + (columns[3].w )),
+				((columns[0].x * other.x) + (columns[1].x * other.y) + (columns[2].x * other.z) + (columns[3].x )),
+				((columns[0].y * other.x) + (columns[1].y * other.y) + (columns[2].y * other.z) + (columns[3].y ))
+			);
 		}
 
 		Matrix4 Matrix4::orthographic(float left, float right, float bottom, float top, float near, float far) {
@@ -110,19 +129,28 @@ namespace Sparky {
 		 }
 
 		Matrix4 operator*(Matrix4 left, const Matrix4& right) {
-			return left.mupltiply(right);
+			return left.multiply(right);
 		}
 
 		Matrix4& Matrix4::operator*=(const Matrix4& other) {
-			return this->mupltiply(other);
+			return this->multiply(other);
 		}
+
+		Vec3 operator*(const Matrix4& left, const Vec3& right) {
+			return left.multiply(right);
+		}
+		Vec4 operator*(const Matrix4& left, const Vec4& right) {
+			return left.multiply(right);
+		}
+
+		
 
 		std::ostream& operator<<(std::ostream& stream, const Matrix4& mat) {
 			stream << "4x4 Matrix: ";
 			for (int i = 0; i < 4; i++) {
 				stream << std::endl;
 				for (int j = 0; j < 4; j++) {
-					stream << mat.elements[i * 4 + j];
+					stream << mat.elements[(i * 4) + j];
 				}
 				
 			}

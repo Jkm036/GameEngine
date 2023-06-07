@@ -30,7 +30,7 @@ namespace Sparky {
 
 			GLenum err = glGetError();
 			if (err != GL_NO_ERROR)
-				std::cout << err << std::endl;
+				printf("OpenGL Error: %d\n", err );
 
 			//swaps back buffers to display
 			glfwSwapBuffers(m_window);
@@ -57,6 +57,7 @@ namespace Sparky {
 			//upon mouse button, calls mousebutton_callback
 			glfwSetMouseButtonCallback(m_window, mousebutton_callback);
 			glfwSetCursorPosCallback(m_window, cursor_position_callback);
+			glfwSwapInterval(0.0);
 
 			//glew creates function pointers to the 
 			//functions in the gpu responsible for graphic generation
