@@ -152,6 +152,9 @@
     <ClInclude Include="header files\Group.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="header files\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="source\shaders\basic.vert">
