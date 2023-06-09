@@ -9,17 +9,18 @@ namespace Sparky {
 		class Texture {
 
 		private:
-			std::string m_Path;
+			std::string m_fileName;
 			GLuint m_TID;
-			unsigned m_width, m_height;
+			GLsizei m_Width, m_Height;
+			GLuint load();
 		public:
 			Texture(const std::string& path);
 			~Texture();
 			void bind()const;
 			void unbind()const;
 
-			inline unsigned int getWidth() const { return m_width; }
-			inline unsigned int getHeight() const { return m_height; }
+			inline unsigned int getWidth() const { return m_Width; }
+			inline unsigned int getHeight() const { return m_Height; }
 
 		};
 	

@@ -29,6 +29,7 @@
     <ClCompile Include="source\graphics\Simple2DRenderer.cpp" />
     <ClCompile Include="source\graphics\Sprite.cpp" />
     <ClCompile Include="source\graphics\StaticSprite.cpp" />
+    <ClCompile Include="source\graphics\Texture.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\math\Matrix4.cpp" />
     <ClCompile Include="source\graphics\Shader.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="header files\BatchRenderer2D.h" />
     <ClInclude Include="header files\FileUtils.h" />
     <ClInclude Include="header files\Group.h" />
+    <ClInclude Include="header files\ImageLoad.h" />
     <ClInclude Include="header files\IndexBuffer.h" />
     <ClInclude Include="header files\Layer.h" />
     <ClInclude Include="header files\Matrix4.h" />

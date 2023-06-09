@@ -25,7 +25,7 @@
 #include "Layer.h"
 #include "Group.h"
 #include <FreeImage.h>
-
+#include "Texture.h"
 
 
 
@@ -58,6 +58,10 @@ int main() {
 	group->add(new Sparky::Graphics::Sprite(0.5f, 0.5f, 5.0f, 2.0f, Sparky::Maths::Vec4(1, 0, 1, 1)));
 	UI.add(group);
 
+	Sparky::Graphics::Texture texture("test.png");
+
+
+	
 
 
 	double x, y;
@@ -74,7 +78,12 @@ int main() {
 		shader2->setUniform2f("light_pos", Sparky::Maths::Vec2( (float) (x * 32.0f/960.0f -16.0f +2.4f) , (float)(9.0f -y*18.0f/ 540.0f ) ) );
 		background.render();
 	    UI.render();
-		
+		glBegin(GL_QUADS);
+		glVertex2f(0.0f, 0.0f);
+		glVertex2f(0.0f, 4.0f);
+		glVertex2f(4.0f, 4.0f);
+		glVertex2f(4.0f, 0.0f);
+		glEnd();
 		window.tick();
 		//fps counter
 		if ((time.elapsed() - timer) >= 1) {
