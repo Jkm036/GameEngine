@@ -19,7 +19,8 @@ namespace Sparky {
 			glBufferData(GL_ARRAY_BUFFER, RENDERER_BUFFER_SIZE, nullptr, GL_DYNAMIC_DRAW);
 			glEnableVertexAttribArray(SHADER_VERTEX_INDEX);
 			glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT,GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)0);
-
+			glEnableVertexAttribArray(SHADER_UV_INDEX);
+			glVertexAttribPointer(SHADER_UV_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(vertexData, vertexData::uv)));
 			glEnableVertexAttribArray(SHADER_COLOR_INDEX);																		
 			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(vertexData, vertexData::color)));
 			
@@ -46,11 +47,11 @@ namespace Sparky {
 			glBindVertexArray(0);
 		}
 
-		void BatchRenderer2D::submit(const Renderable2D* renderable) {
-			Maths::Vec3 position = renderable->getPosition();
-			Maths::Vec2 size     = renderable->getSize();
-			Maths::Vec4 color    = renderable->getColor();
-
+		void BatchRenderer2D::submit( const Renderable2D* renderable) {
+			Maths::Vec3 position          = renderable->getPosition();
+			Maths::Vec2 size              = renderable->getSize();
+			Maths::Vec4 color             = renderable->getColor();
+			std::vector<Maths::Vec2> uvs  = renderable->getUVs();
 			unsigned int r = color.w * 255.0f;
 			unsigned int g = color.x * 255.0f;
 			unsigned int b=  color.y * 255.0f;
@@ -59,18 +60,22 @@ namespace Sparky {
 			unsigned int c = a << 24 | b << 16 | g << 8 | r;
 
 			m_VertexBuffer->vertex = *m_TransformationBack * position;
+			m_VertexBuffer->uv = uvs[0];
 			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 
 			m_VertexBuffer->vertex = *m_TransformationBack * Maths::Vec3(position.x, (position.y + size.y), position.z);
+			m_VertexBuffer->uv = uvs[1];
 			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 
 			m_VertexBuffer->vertex = *m_TransformationBack * Maths::Vec3((position.x+ size.x), (position.y + size.y), position.z);
+			m_VertexBuffer->uv = uvs[2];
 			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 
 			m_VertexBuffer->vertex = *m_TransformationBack * Maths::Vec3((position.x + size.x), position.y , position.z);
+			m_VertexBuffer->uv = uvs[3];
 			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 

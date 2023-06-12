@@ -75,11 +75,11 @@ namespace Sparky{
 
 			//Error Hanndling
 			if (!compiled(vertex)) {
-				std::cout << "In Vertex Shader" << std::endl;
+				std::cout << "In Vertex Shader: " << std::endl;
 				return 0;
 			}
 			if (!compiled(fragment)) {
-				std::cout << "In Fragment Shader" << std::endl;
+				std::cout << "In Fragment Shader: " << std::endl;
 				return 0;
 			}
 			//attach shaders to the program
