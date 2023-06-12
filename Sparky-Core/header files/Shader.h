@@ -10,9 +10,10 @@ namespace Sparky {
 			private:
 				const char* m_vertexPath;
 				const char* m_fragPath;
-				GLuint m_ShaderID;
+				
 				GLint getUniformLocation(const GLchar* name);
 			public: 
+			GLuint m_ShaderID;
 			Shader(const char* vertexPath, const char* fragPath);
 			~Shader();
 

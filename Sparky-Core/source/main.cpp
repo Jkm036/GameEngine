@@ -59,8 +59,11 @@ int main() {
 	UI.add(group);
 
 	Sparky::Graphics::Texture texture("test.png");
-
-
+	texture.bind();
+	shader->enable();
+	shader->setUniformMat4("pr_matrix", Sparky::Maths::Matrix4::orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1, 1));
+	shader->setUniform1i("tex", 0);
+	glActiveTexture(GL_TEXTURE0);
 	
 
 
@@ -72,16 +75,22 @@ int main() {
 		fps++;
 		window.clear();
 		window.getMousePosition(x, y);
-		shader->enable();
-		shader2->enable();
+		//shader->enable();
+		//shader2->enable();
 		//Light source to mouse (i know its a little off)
-		shader2->setUniform2f("light_pos", Sparky::Maths::Vec2( (float) (x * 32.0f/960.0f -16.0f +2.4f) , (float)(9.0f -y*18.0f/ 540.0f ) ) );
-		background.render();
-	    UI.render();
+		//shader2->setUniform2f("light_pos", Sparky::Maths::Vec2( (float) (x * 32.0f/960.0f -16.0f +2.4f) , (float)(9.0f -y*18.0f/ 540.0f ) ) );
+		//background.render();
+	    
+		
+		//UI.render();
 		glBegin(GL_QUADS);
+		glTexCoord2f(0, 0);
 		glVertex2f(0.0f, 0.0f);
+		glTexCoord2f(0, 1);
 		glVertex2f(0.0f, 4.0f);
+		glTexCoord2f(1, 1);
 		glVertex2f(4.0f, 4.0f);
+		glTexCoord2f(1, 0);
 		glVertex2f(4.0f, 0.0f);
 		glEnd();
 		window.tick();

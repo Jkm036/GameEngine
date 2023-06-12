@@ -1,6 +1,7 @@
 #pragma once
 #include <FreeImage.h>
 #include <string>
+#include <iostream>
 
 
 namespace Sparky {
@@ -21,7 +22,7 @@ namespace Sparky {
 			//if still unkown, return failure
 			if (fif == FIF_UNKNOWN)
 				return nullptr;
-
+			
 			//check that the plugin has reading capabilities and load the file
 			if (FreeImage_FIFSupportsReading(fif))
 				dib = FreeImage_Load(fif, filename);
