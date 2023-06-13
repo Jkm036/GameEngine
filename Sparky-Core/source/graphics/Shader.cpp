@@ -26,8 +26,14 @@ namespace Sparky{
 		void Shader::setUniform1f(const GLchar* name, float val) {
 			glUniform1f(getUniformLocation(name), val);
 		}
+		void Shader::setUniform1fv(const GLchar* name,  float* val, int count) {
+			glUniform1fv(getUniformLocation(name),count,  val);
+		}
 		void Shader::setUniform1i(const GLchar* name, int val) {
 			glUniform1i(getUniformLocation(name), val);
+		}
+		void Shader::setUniform1iv(const GLchar* name, int*  val, int count) {
+			glUniform1iv(getUniformLocation(name), count , val);
 		}
 		void Shader::setUniform2f(const GLchar* name, const Maths::Vec2& vector) {
 			glUniform2f(getUniformLocation(name), vector.x, vector.y);

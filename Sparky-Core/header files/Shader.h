@@ -19,7 +19,10 @@ namespace Sparky {
 
 			
 			void setUniform1f(const GLchar* name, float val);
+			void setUniform1fv(const GLchar* name, float* val, int count);
 			void setUniform1i(const GLchar* name,int val);
+			void setUniform1iv(const GLchar* name, int* val, int count);
+
 			
 			void setUniform3f(const GLchar* name,  const Maths::Vec3& vector);
 			void setUniform2f(const GLchar* name, const Maths::Vec2& vector);

@@ -17,10 +17,17 @@ namespace Sparky {
 			glGenBuffers(1, &m_Vbo);
 			glBindBuffer(GL_ARRAY_BUFFER, m_Vbo);
 			glBufferData(GL_ARRAY_BUFFER, RENDERER_BUFFER_SIZE, nullptr, GL_DYNAMIC_DRAW);
+
+			//position vertex 
 			glEnableVertexAttribArray(SHADER_VERTEX_INDEX);
 			glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT,GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)0);
+			//texture vertex
 			glEnableVertexAttribArray(SHADER_UV_INDEX);
 			glVertexAttribPointer(SHADER_UV_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(vertexData, vertexData::uv)));
+			//TID vertex
+			glEnableVertexAttribArray(SHADER_TID_INDEX);
+			glVertexAttribPointer(SHADER_TID_INDEX, 1, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(vertexData, vertexData::tid)));
+			//color vertex
 			glEnableVertexAttribArray(SHADER_COLOR_INDEX);																		
 			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(vertexData, vertexData::color)));
 			
@@ -48,34 +55,65 @@ namespace Sparky {
 		}
 
 		void BatchRenderer2D::submit( const Renderable2D* renderable) {
-			Maths::Vec3 position          = renderable->getPosition();
-			Maths::Vec2 size              = renderable->getSize();
-			Maths::Vec4 color             = renderable->getColor();
-			std::vector<Maths::Vec2> uvs  = renderable->getUVs();
-			unsigned int r = color.w * 255.0f;
-			unsigned int g = color.x * 255.0f;
-			unsigned int b=  color.y * 255.0f;
-			unsigned int a = color.z * 255.0f;
+			const Maths::Vec3& position          = renderable->getPosition();
+			const Maths::Vec2& size              = renderable->getSize();
+			const Maths::Vec4& color             = renderable->getColor();
+			const std::vector<Maths::Vec2>& uvs  = renderable->getUVs();
+			const GLuint& tid                    = renderable-> getTID();
+			
+			unsigned int  c = 0;
+			float texture_slot = 0.0f; 
+			if (tid > 0) {
+				bool found = false;
+				for (int i = 0; i < m_TextureSlots.size(); ++i) {
+					if (m_TextureSlots[i] == tid) {
+						texture_slot = (float)(i + 1);
+						found = true;
+						break;
 
-			unsigned int c = a << 24 | b << 16 | g << 8 | r;
+					}
+				}
+				if (!found) {
+					if (m_TextureSlots.size() >= 32) {
+						End();
+						flush();
+						Begin();
+					}
+					m_TextureSlots.push_back(tid);
+					texture_slot = (float)(m_TextureSlots.size());
+				}
 
+			} else {
+				unsigned int r = color.w * 255.0f;
+				unsigned int g = color.x * 255.0f;
+				unsigned int b = color.y * 255.0f;
+				unsigned int a = color.z * 255.0f;
+
+			    c = a << 24 | b << 16 | g << 8 | r;
+
+			}
+			
 			m_VertexBuffer->vertex = *m_TransformationBack * position;
 			m_VertexBuffer->uv = uvs[0];
+			m_VertexBuffer->tid = texture_slot;
 			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 
 			m_VertexBuffer->vertex = *m_TransformationBack * Maths::Vec3(position.x, (position.y + size.y), position.z);
 			m_VertexBuffer->uv = uvs[1];
+			m_VertexBuffer->tid = texture_slot;
 			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 
 			m_VertexBuffer->vertex = *m_TransformationBack * Maths::Vec3((position.x+ size.x), (position.y + size.y), position.z);
 			m_VertexBuffer->uv = uvs[2];
+			m_VertexBuffer->tid = texture_slot;
 			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 
 			m_VertexBuffer->vertex = *m_TransformationBack * Maths::Vec3((position.x + size.x), position.y , position.z);
 			m_VertexBuffer->uv = uvs[3];
+			m_VertexBuffer->tid = texture_slot;
 			m_VertexBuffer->color = c;
 			m_VertexBuffer++;
 
@@ -91,6 +129,11 @@ namespace Sparky {
 
 		}
 		void BatchRenderer2D::flush() {
+
+			for (int i = 0; i < m_TextureSlots.size(); ++i) {
+				glActiveTexture(GL_TEXTURE0 + i);
+				glBindTexture(GL_TEXTURE_2D, m_TextureSlots[i]);
+			}
 			glBindVertexArray(m_Vao);
 			m_Ibo->bind();
 				glDrawElements(GL_TRIANGLES, m_IndexCount, GL_UNSIGNED_SHORT, NULL);

@@ -6,11 +6,13 @@
 #include "Shader.h"
 #include "Renderer2D.h"
 #include "MyMath.h"
+#include "Texture.h"
 
 namespace Sparky { namespace Graphics{
 	struct vertexData {
 		Maths::Vec3 vertex;
 		Maths::Vec2 uv;
+		float tid;
 		unsigned int  color;
 	};
 
@@ -20,6 +22,8 @@ namespace Sparky { namespace Graphics{
 		Maths::Vec3 m_position;
 		Maths::Vec4 m_color;
 		std::vector<Maths::Vec2> m_UVs;
+		Texture* m_texture = nullptr;
+
 	public:
 		Renderable2D() {setUVDefaults();};
 
@@ -40,6 +44,8 @@ namespace Sparky { namespace Graphics{
 		{return m_color;}
 		inline  const std::vector<Maths::Vec2>& getUVs() const 
 		{return m_UVs; }
+		inline const GLuint getTID() const
+		{return m_texture== nullptr ? 0: m_texture->getID();}
 	private:
 		void setUVDefaults() {
 			m_UVs.push_back(Maths::Vec2(0, 0));
